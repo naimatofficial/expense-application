@@ -1,20 +1,20 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import Card from "./Card";
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
-function ExpenseItem({ date, title, amount }) {
+const ExpenseItem = forwardRef((props, ref) => {
 	return (
-		<div className="expense-item">
-			<ExpenseDate date={date} />
+		<Card className="expense-item" ref={ref}>
+			<ExpenseDate date={props.date} />
 			<div className="expense-item__description">
-				<h2>{title}</h2>
+				<h2>{props.title}</h2>
 				<div className="expense-item__price">
-					<span className="price">${amount}</span>
+					<span className="price">${props.amount}</span>
 				</div>
 			</div>
-		</div>
+		</Card>
 	);
-}
+});
 
 export default ExpenseItem;
