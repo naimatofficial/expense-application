@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
 import "./App.css";
-import Expenses from "./components/Expenses";
+import Chart from "./components/Chart/Chart";
+import Expenses from "./components/Expenses/Expenses";
+import ExpensesChart from "./components/Expenses/ExpensesChart";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 const DUMMY_EXPENSES = [
@@ -14,7 +16,7 @@ const DUMMY_EXPENSES = [
 	{
 		id: 1,
 		title: "Mobile",
-		date: new Date("2022, 9, 4"),
+		date: new Date("2021, 9, 4"),
 		amount: 193.03,
 	},
 	{
@@ -26,7 +28,7 @@ const DUMMY_EXPENSES = [
 	{
 		id: 3,
 		title: "Buy Watch",
-		date: new Date("2022, 11, 7"),
+		date: new Date("2020, 11, 7"),
 		amount: 23.42,
 	},
 ];

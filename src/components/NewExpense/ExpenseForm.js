@@ -44,7 +44,7 @@ const ExpenseForm = (props) => {
 
 		const expenseData = {
 			title: enteredTitle,
-			amount: enteredAmount,
+			amount: +enteredAmount,
 			date: new Date(enteredDate),
 		};
 
@@ -52,6 +52,7 @@ const ExpenseForm = (props) => {
 		setEnteredAmount("");
 		setEnteredDate("");
 		setEnteredTitle("");
+		console.log("amount: " + enteredAmount);
 	};
 	return (
 		<form onSubmit={submitHandler}>
@@ -73,7 +74,6 @@ const ExpenseForm = (props) => {
 						name="amount"
 						onChange={amountChangeHandler}
 						value={enteredAmount}
-						min="0"
 						required
 					/>
 				</div>

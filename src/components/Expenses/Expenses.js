@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Card from "./Card";
-import ExpenseItem from "./ExpenseItem";
+import Card from "../UI/Card";
 import "./Expenses.css";
-import FlipMove from "react-flip-move";
+import ExpensesChart from "./ExpensesChart";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = ({ items }) => {
 	const [filteredYear, setFilteredYear] = useState("2022");
@@ -12,23 +12,18 @@ const Expenses = ({ items }) => {
 		setFilteredYear(selectedYear);
 	};
 
+	const filteredExpenses = items.filter((expense) => {
+		return expense.date.getFullYear().toString() === filteredYear;
+	});
+
 	return (
 		<Card className="expenses">
 			<ExpensesFilter
 				selected={filteredYear}
 				onChangeFilter={filterChangeHandler}
 			/>
-
-			{items.map((expense, index) => (
-				<FlipMove>
-					<ExpenseItem
-						key={index} // unique key must be included otherwise error will be generate
-						title={expense.title}
-						date={expense.date}
-						amount={expense.amount}
-					/>
-				</FlipMove>
-			))}
+			<ExpensesChart expenses={filteredExpenses} />
+			<ExpensesList items={filteredExpenses} />
 		</Card>
 	);
 };
